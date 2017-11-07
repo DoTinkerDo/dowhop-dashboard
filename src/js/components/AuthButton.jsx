@@ -15,13 +15,13 @@ const AuthButton = withRouter(({ history, authentication, logOut }) => (
         <DoWhopButton
           onClick={() => {
             logOut();
-            history.push('/my-profile/login');
+            history.push('/login');
           }}
         >
           Logout
         </DoWhopButton>
       ) : (
-        <Link to="/my-profile/login">
+        <Link to="/login">
           <DoWhopButton>Login</DoWhopButton>
         </Link>
       )}

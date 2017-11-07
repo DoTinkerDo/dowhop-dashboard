@@ -26,7 +26,7 @@ class Login extends Component {
   };
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/my-profile' } };
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
     if (this.props.authentication.isAuthenticated) {
       return <Redirect to={from} />;
     }
