@@ -9,7 +9,8 @@ import firebase, { ui } from '../../firebase';
 
 type Props = {
   location: Object,
-  currentUser: Object
+  currentUser: Object,
+  authentication: Object
 };
 
 class Login extends Component<Props> {
@@ -28,14 +29,19 @@ class Login extends Component<Props> {
   props: Props;
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { from } = this.props.location.state || { from: { pathname: '/dashboard' } };
     if (this.props.currentUser.isAdmin) {
       return <Redirect to={from} />;
+    } else if (!this.props.currentUser.isAdmin && this.props.authentication.isAuthenticated) {
+      return (
+        <div>
+          <p className="center-text">You must be logged in as an admin to view the page at {from.pathname}</p>
+        </div>
+      );
     }
     return (
       <Row>
         <Col>
-          <p className="center-text">You must be logged in as an admin to view the page at {from.pathname}</p>
           <FirebaseUIAuth ui={ui} {...this.uiConfig} />
         </Col>
       </Row>
@@ -43,6 +49,6 @@ class Login extends Component<Props> {
   }
 }
 
-const mapStateToProps = ({ currentUser }) => ({ currentUser });
+const mapStateToProps = ({ currentUser, authentication }) => ({ currentUser, authentication });
 
 export default connect(mapStateToProps)(Login);

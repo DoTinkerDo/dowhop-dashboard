@@ -3,8 +3,6 @@
 import { auth, database } from '../../firebase';
 import { ADD_CURRENT_USER, REMOVE_CURRENT_USER } from './actions';
 
-// TODO
-// add action REMOVE_CURRENT_USER on logout
 const addCurrentUser = user => ({
   type: ADD_CURRENT_USER,
   displayName: user.displayName,
