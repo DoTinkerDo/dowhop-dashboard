@@ -34,9 +34,11 @@ class Login extends Component<Props> {
       return <Redirect to={from} />;
     } else if (!this.props.currentUser.isAdmin && this.props.authentication.isAuthenticated) {
       return (
-        <div>
-          <p className="center-text">You must be logged in as an admin to view the page at {from.pathname}</p>
-        </div>
+        <Row>
+          <Col>
+            <p className="center-text">You must be logged in as an admin to view the page at {from.pathname}</p>
+          </Col>
+        </Row>
       );
     }
     return (
