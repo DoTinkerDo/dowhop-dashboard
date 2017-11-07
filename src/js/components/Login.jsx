@@ -22,18 +22,18 @@ class Login extends Component {
 
   props: {
     location: Object,
-    authentication: Object
+    currentUser: Object
   };
 
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
-    if (this.props.authentication.isAuthenticated) {
+    if (this.props.currentUser.isAdmin) {
       return <Redirect to={from} />;
     }
     return (
       <Row>
         <Col>
-          <p className="center-text">You must be logged in to view the page at {from.pathname}</p>
+          <p className="center-text">You must be logged in as an admin to view the page at {from.pathname}</p>
           <FirebaseUIAuth ui={ui} {...this.uiConfig} />
         </Col>
       </Row>
@@ -41,6 +41,6 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = ({ authentication }) => ({ authentication });
+const mapStateToProps = ({ currentUser }) => ({ currentUser });
 
 export default connect(mapStateToProps)(Login);

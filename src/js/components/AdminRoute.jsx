@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import renderMergedProps from '../helpers/renderMergedProps';
 
-const PrivateRoute = ({ component, redirectTo, authentication, ...rest }: Object) => (
+const AdminRoute = ({ component, redirectTo, currentUser, ...rest }: Object) => (
   <Route
     {...rest}
     render={routeProps =>
-      authentication.isAuthenticated ? (
+      currentUser.isAdmin ? (
         renderMergedProps(component, routeProps, rest)
       ) : (
         <Redirect
@@ -22,6 +22,6 @@ const PrivateRoute = ({ component, redirectTo, authentication, ...rest }: Object
   />
 );
 
-const mapStateToProps = ({ authentication }) => ({ authentication });
+const mapStateToProps = ({ currentUser }) => ({ currentUser });
 
-export default connect(mapStateToProps)(PrivateRoute);
+export default connect(mapStateToProps)(AdminRoute);
