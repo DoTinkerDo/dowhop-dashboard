@@ -7,7 +7,12 @@ import { Row, Col } from 'reactstrap';
 import FirebaseUIAuth from './FirebaseUIAuth';
 import firebase, { ui } from '../../firebase';
 
-class Login extends Component {
+type Props = {
+  location: Object,
+  currentUser: Object
+};
+
+class Login extends Component<Props> {
   uiConfig = {
     callbacks: {
       signInSuccess: () => false
@@ -20,10 +25,7 @@ class Login extends Component {
     ]
   };
 
-  props: {
-    location: Object,
-    currentUser: Object
-  };
+  props = Props;
 
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
