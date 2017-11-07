@@ -5,6 +5,7 @@ export const ATTEMPTING_LOGOUT = 'ATTEMPTING_LOGOUT';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOOUT';
 export const ADD_CURRENT_USER = 'ADD_CURRENT_USER';
+export const REMOVE_CURRENT_USER = 'REMOVE_CURRENT_USER';
 export const ADD_USERS = 'ADD_USERS';
 export const UPDATE_USER = 'UPDATE_USER';
 export const REMOVE_USER = 'REMOVE_USER';
