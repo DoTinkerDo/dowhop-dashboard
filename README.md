@@ -14,11 +14,10 @@ $ yarn flow
 Testing
 $ yarn test
 
-Deploy to Firebase
-$ yarn build
-$ yarn deploy
+Deploy to Netlify
+TODO add instructions
 
 ```
 
 ### Staging Server
-https://dowhop-me.firebaseapp.com/
+
