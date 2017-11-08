@@ -1,6 +1,6 @@
 // @flow
 
-import { ADD_CURRENT_USER } from '../actions/actions';
+import { ADD_CURRENT_USER, REMOVE_CURRENT_USER } from '../actions/actions';
 
 export default function currentUserReducer(state: Object = {}, action: Object) {
   switch (action.type) {
@@ -11,6 +11,14 @@ export default function currentUserReducer(state: Object = {}, action: Object) {
         email: action.email,
         photoURL: action.photoURL,
         isAdmin: action.isAdmin
+      };
+    case REMOVE_CURRENT_USER:
+      return {
+        displayName: '',
+        uid: '',
+        email: '',
+        photoURL: '',
+        isAdmin: ''
       };
     default:
       return state;

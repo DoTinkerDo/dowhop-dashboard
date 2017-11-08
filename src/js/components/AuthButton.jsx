@@ -15,7 +15,7 @@ const AuthButton = withRouter(({ history, authentication, logOut }) => (
         <DoWhopButton
           onClick={() => {
             logOut();
-            history.push('/login');
+            history.push('/');
           }}
         >
           Logout
