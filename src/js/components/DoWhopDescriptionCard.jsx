@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardImg, CardBody, CardText } from 'reactstrap';
+import { Card, CardImg, CardBody, CardText, CardTitle } from 'reactstrap';
 
 const DoWhopDescriptionCard = (props: {
   titleDescription: string,
@@ -13,15 +13,15 @@ const DoWhopDescriptionCard = (props: {
   const src = (downloadURL && downloadURL.image1) || downloadURL;
   return (
     <div className="dowhop-grid-card">
-      <Link to={`/dashboard/${doWhopDescriptionKey}`}>
-        <Card>
+      <Card>
+        <Link to={`/dashboard/${doWhopDescriptionKey}`}>
+          <CardTitle>{titleDescription}</CardTitle>
           <CardImg src={src} alt="DoWhopDescription Activity" />
-          <CardBody>
-            <CardText>{titleDescription}</CardText>
-            <CardText>{doWhopDescriptionKey}</CardText>
-          </CardBody>
-        </Card>
-      </Link>
+        </Link>
+        <CardBody>
+          <CardText>{doWhopDescriptionKey}</CardText>
+        </CardBody>
+      </Card>
     </div>
   );
 };

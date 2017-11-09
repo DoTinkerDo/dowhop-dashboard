@@ -13,10 +13,13 @@ const cleanDowhopDescriptions = () => {
         const childKey = childSnapshot.key;
         const childData = childSnapshot.val();
         const doWhopDescriptionRef = doWhopDescriptionsRef.child(childKey);
+
         // Delete desc without pushKey
         if (childKey === 'null' || childKey === 'undefined') doWhopDescriptionRef.remove();
+
         // Delete desc without pushkey value - These are reviews only desc
         if (typeof childData.doWhopDescriptionKey === 'undefined') doWhopDescriptionRef.remove();
+
         // Write default summer date if no date is present
         if (typeof childData.createdAt === 'undefined') doWhopDescriptionRef.update({ createdAt: '2017-06-08--12:00' });
       });
@@ -45,7 +48,10 @@ const startListeningForDoWhopDescriptions = () => (dispatch: Function) => {
   auth.onAuthStateChanged(user => {
     if (user) {
       cleanDowhopDescriptions();
-      doWhopDescriptionsRef.on('child_added', snapshot => dispatch(addDoWhopDescription(snapshot.val())));
+      doWhopDescriptionsRef
+        .orderByChild('createdAt')
+        .limitToLast(25)
+        .on('child_added', snapshot => dispatch(addDoWhopDescription(snapshot.val())));
       doWhopDescriptionsRef.on('child_changed', snapshot => dispatch(updateDoWhopDescription(snapshot.val())));
       doWhopDescriptionsRef.on('child_removed', snapshot => dispatch(removeDoWhopDescription(snapshot.val())));
     }
