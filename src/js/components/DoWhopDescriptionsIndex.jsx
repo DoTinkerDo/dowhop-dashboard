@@ -3,6 +3,7 @@
 import React from 'react';
 import { map } from 'lodash';
 import { Row, Col } from 'reactstrap';
+import DoWhopDescriptionCard from './DoWhopDescriptionCard';
 
 const DoWhopDescriptionsIndex = ({ doWhopDescriptions }: Object) => (
   <div>
@@ -11,9 +12,7 @@ const DoWhopDescriptionsIndex = ({ doWhopDescriptions }: Object) => (
       <Col>
         <div className="profile-grid">
           {map(doWhopDescriptions, doWhopDescription => (
-            <pre key={doWhopDescription.doWhopDescriptionKey}>
-              <code>{JSON.stringify(doWhopDescription, null, 4)}</code>
-            </pre>
+            <DoWhopDescriptionCard key={doWhopDescription.doWhopDescriptionKey} {...doWhopDescription} />
           ))}
         </div>
       </Col>
