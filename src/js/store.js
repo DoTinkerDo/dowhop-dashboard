@@ -8,7 +8,7 @@ import { startListeningForUserProfileImageChanges } from './actions/user-profile
 import startListeningForAppUsers from './actions/app-users';
 import { startListeningForProfileSocialMediaLinkChanges } from './actions/profile-social-media-links';
 import startListeningForProfileChanges from './actions/app-profiles';
-import startListeningForDoWhopDescription from './actions/dowhop-descriptions';
+import startListeningForDoWhopDescriptions from './actions/dowhop-descriptions';
 
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
@@ -27,6 +27,6 @@ store.dispatch(startListeningForAppUsers());
 store.dispatch(startListeningForUserProfileImageChanges());
 store.dispatch(startListeningForProfileSocialMediaLinkChanges());
 store.dispatch(startListeningForProfileChanges());
-store.dispatch(startListeningForDoWhopDescription());
+store.dispatch(startListeningForDoWhopDescriptions());
 
 export default store;

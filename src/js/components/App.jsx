@@ -8,7 +8,7 @@ import Wrapper from './Wrapper';
 import AdminRoute from './AdminRoute';
 import PropsRoute from './PropsRoute';
 import Login from './Login';
-import DashboardContainer from '../containers/DashboardContainer';
+import Dashboard from './Dashboard';
 import Landing from './Landing';
 import FourOhFour from './FourOhFour';
 
@@ -18,7 +18,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Landing} />
         <PropsRoute path="/login" component={Login} />
-        <AdminRoute path="/dashboard" component={DashboardContainer} redirectTo="/login" />
+        <AdminRoute path="/dashboard" component={Dashboard} redirectTo="/login" />
         <Route component={FourOhFour} />
       </Switch>
     </Wrapper>
