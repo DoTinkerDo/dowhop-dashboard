@@ -13,6 +13,7 @@ import appProfileReducer from './app-profiles';
 import appUsersReducer from './app-users';
 import profileUrlReducer from './user-profile-image';
 import { socialMediaUrlsReducer, setSocialUrlInputReducer } from './profile-social-media-links';
+import doWhopDescriptionsReducer from './dowhop-descriptions';
 
 const reducer = combineReducers({
   authentication: authReducer,
@@ -25,7 +26,8 @@ const reducer = combineReducers({
   profileUrl: profileUrlReducer,
   socialUrls: socialMediaUrlsReducer,
   socialInputs: setSocialUrlInputReducer,
-  appProfiles: appProfileReducer
+  appProfiles: appProfileReducer,
+  doWhopDescriptions: doWhopDescriptionsReducer
 });
 
 export default reducer;

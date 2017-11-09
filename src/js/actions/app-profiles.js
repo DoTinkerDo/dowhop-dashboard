@@ -23,6 +23,7 @@ const removeProfile = (profile, uid) => ({
 });
 
 const startListeningForProfileChanges = () => (dispatch: Function) => {
+  // TODO Wrap in onAutStateChanged to fire at login/logout
   userProfilesRef.on('child_added', snapshot => dispatch(addProfile(snapshot.val(), snapshot.key)));
   userProfilesRef.on('child_changed', snapshot => dispatch(updateProfile(snapshot.val(), snapshot.key)));
   userProfilesRef.on('child_removed', snapshot => dispatch(removeProfile(snapshot.val(), snapshot.key)));

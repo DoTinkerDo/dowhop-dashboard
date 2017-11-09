@@ -1,16 +1,20 @@
-.profile-grid {
+.dowhop-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.profile-grid-card {
+.dowhop-grid-card {
   display: inline-block;
-  width: 20%;
-  height: 20%;
+  width: 30%;
+  height: auto;
   padding: 0;
   margin: 5px 5px;
   border: 1px solid lightgray;
   background: white;
   box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.03);
+  font-size: 60%;
+  h4 {
+    text-align: center;
+  }
 }
