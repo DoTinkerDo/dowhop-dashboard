@@ -12,7 +12,7 @@ const DoWhopDescriptionCard = (props: {
   const { titleDescription, downloadURL, doWhopDescriptionKey } = props;
   const src = (downloadURL && downloadURL.image1) || downloadURL;
   return (
-    <div className="grid-card">
+    <div className="dowhop-grid-card">
       <Link to={`/dashboard/${doWhopDescriptionKey}`}>
         <Card>
           <CardImg src={src} alt="DoWhopDescription Activity" />

@@ -10,7 +10,7 @@ const DoWhopDescriptionsIndex = ({ doWhopDescriptions }: Object) => (
     <h2 className="text-center">DoWhop Descriptions</h2>
     <Row>
       <Col>
-        <div className="profile-grid">
+        <div className="dowhop-grid">
           {map(doWhopDescriptions, doWhopDescription => (
             <DoWhopDescriptionCard key={doWhopDescription.doWhopDescriptionKey} {...doWhopDescription} />
           ))}
