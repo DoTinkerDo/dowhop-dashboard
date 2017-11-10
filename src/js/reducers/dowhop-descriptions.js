@@ -1,6 +1,11 @@
 // @flow
 
-import { ADD_DOWHOP_DESCRIPTION, UPDATE_DOWHOP_DESCRIPTION, REMOVE_DOWHOP_DESCRIPTION } from '../actions/actions';
+import {
+  ADD_DOWHOP_DESCRIPTION,
+  UPDATE_DOWHOP_DESCRIPTION,
+  REMOVE_DOWHOP_DESCRIPTION,
+  REMOVE_DOWHOP_DESCRIPTIONS
+} from '../actions/actions';
 
 export default function doWhopDescriptionsReducer(state: Array<Object> = [], action: Object) {
   switch (action.type) {
@@ -18,6 +23,8 @@ export default function doWhopDescriptionsReducer(state: Array<Object> = [], act
       );
       return [...state.slice(0, idx), ...state.slice(idx + 1)];
     }
+    case REMOVE_DOWHOP_DESCRIPTIONS:
+      return [];
     default:
       return state;
   }
