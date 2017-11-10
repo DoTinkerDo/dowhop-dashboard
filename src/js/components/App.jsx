@@ -10,6 +10,7 @@ import PropsRoute from './PropsRoute';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import DoWhop from './DoWhop';
+import CreateDoWhop from './CreateDoWhop';
 import Landing from './Landing';
 import FourOhFour from './FourOhFour';
 
@@ -21,6 +22,7 @@ const App = () => (
         <PropsRoute path="/login" component={Login} />
         <AdminRoute exact path="/dashboard" component={Dashboard} redirectTo="/login" />
         <AdminRoute path="/dashboard/:dowhopDescriptionKey" component={DoWhop} redirectTo="/login" />
+        <AdminRoute path="/create" component={CreateDoWhop} redirectTo="/login" />
         <Route component={FourOhFour} />
       </Switch>
     </Wrapper>
