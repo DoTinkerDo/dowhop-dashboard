@@ -22,6 +22,7 @@ const removeUser = removedUser => ({
   metadata: removedUser.uid
 });
 
+// TODO remove users when logout button is clicked.
 const startListeningForAppUsers = () => (dispatch: Function) => {
   usersRef.on('child_added', snapshot => dispatch(addUsers(snapshot.val())));
   usersRef.on('child_changed', snapshot => dispatch(updateUser(snapshot.val())));
