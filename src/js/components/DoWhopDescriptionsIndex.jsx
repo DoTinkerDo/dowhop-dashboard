@@ -7,7 +7,6 @@ import DoWhopDescriptionCard from './DoWhopDescriptionCard';
 
 const DoWhopDescriptionsIndex = ({ doWhopDescriptions }: Object) => (
   <div>
-    <h2 className="text-center">DoWhop Descriptions</h2>
     <Row>
       <Col>
         <div className="dowhop-grid">

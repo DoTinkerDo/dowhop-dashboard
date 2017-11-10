@@ -1,10 +1,17 @@
 // @flow
 
 import { database, auth } from '../../firebase';
-import { ADD_DOWHOP_DESCRIPTION, UPDATE_DOWHOP_DESCRIPTION, REMOVE_DOWHOP_DESCRIPTION } from './actions';
+import {
+  ADD_DOWHOP_DESCRIPTION,
+  UPDATE_DOWHOP_DESCRIPTION,
+  REMOVE_DOWHOP_DESCRIPTION,
+  REMOVE_DOWHOP_DESCRIPTIONS
+} from './actions';
 
 const doWhopDescriptionsRef = database.ref('DoWhopDescriptions');
 
+// TODO Move this code to Firebase cloud function
+// Write code in lifecycle functions directory
 const cleanDowhopDescriptions = () => {
   doWhopDescriptionsRef
     .once('value')
@@ -44,6 +51,10 @@ const removeDoWhopDescription = changeDoWhopDescription => ({
   metadata: changeDoWhopDescription.dowhopDescriptionKey
 });
 
+const removeDowhopDescriptions = () => ({
+  type: REMOVE_DOWHOP_DESCRIPTIONS
+});
+
 const startListeningForDoWhopDescriptions = () => (dispatch: Function) => {
   auth.onAuthStateChanged(user => {
     if (user) {
@@ -54,6 +65,8 @@ const startListeningForDoWhopDescriptions = () => (dispatch: Function) => {
         .on('child_added', snapshot => dispatch(addDoWhopDescription(snapshot.val())));
       doWhopDescriptionsRef.on('child_changed', snapshot => dispatch(updateDoWhopDescription(snapshot.val())));
       doWhopDescriptionsRef.on('child_removed', snapshot => dispatch(removeDoWhopDescription(snapshot.val())));
+    } else {
+      dispatch(removeDowhopDescriptions());
     }
   });
 };

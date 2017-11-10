@@ -60,7 +60,6 @@ class SocialMediaEditModal extends Component<Props, State> {
   };
 
   render() {
-    // console.log('SOCIAL INPUTS -> ', this.props.socialInputs);
     const { valueFB, valueTW, valueIG, valueIN } = this.props.socialInputs;
     const { valueFBValid, valueTWValid, valueIGValid, valueINValid, modal } = this.state;
     return (

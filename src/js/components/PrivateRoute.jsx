@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import type { MapStateToProps } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import renderMergedProps from '../helpers/renderMergedProps';
 
@@ -22,6 +23,6 @@ const PrivateRoute = ({ component, redirectTo, authentication, ...rest }: Object
   />
 );
 
-const mapStateToProps = ({ authentication }) => ({ authentication });
+const mapStateToProps: MapStateToProps<*, *, *> = ({ authentication }) => ({ authentication });
 
 export default connect(mapStateToProps)(PrivateRoute);
