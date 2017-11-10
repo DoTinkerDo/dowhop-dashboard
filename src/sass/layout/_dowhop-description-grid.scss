@@ -1,13 +1,4 @@
-.dowhop-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .dowhop-grid-card {
-  display: inline-block;
-  width: 30%;
-  height: auto;
   padding: 0;
   margin: 5px 5px;
   border: 1px solid lightgray;
@@ -16,5 +7,18 @@
   font-size: 60%;
   h4 {
     text-align: center;
+  }
+}
+
+@media screen and (min-width: 540px) {
+  .dowhop-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .dowhop-grid-card {
+    display: inline-block;
+    width: 30%;
+    height: auto;
   }
 }

@@ -207,7 +207,7 @@ class CreateDoWhop extends Component<Props, State> {
                 </Label>
                 <br />
               </FormGroup>
-            </Form>{' '}
+            </Form>
           </ModalBody>
           <ModalFooter>
             <DoWhopButton onClick={this.toggle}>Save</DoWhopButton>
