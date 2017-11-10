@@ -1,8 +1,8 @@
 // @flow
 
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 import store from '../store';
 import Wrapper from './Wrapper';
 import AdminRoute from './AdminRoute';
