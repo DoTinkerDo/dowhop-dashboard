@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import type { MapStateToProps } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import renderMergedProps from '../helpers/renderMergedProps';
 
@@ -22,6 +23,6 @@ const AdminRoute = ({ component, redirectTo, currentUser, ...rest }: Object) => 
   />
 );
 
-const mapStateToProps = ({ currentUser }) => ({ currentUser });
+const mapStateToProps: MapStateToProps<*, *, *> = ({ currentUser }) => ({ currentUser });
 
 export default connect(mapStateToProps)(AdminRoute);

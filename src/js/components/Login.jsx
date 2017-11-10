@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import type { MapStateToProps } from 'react-redux';
 import { Row, Col } from 'reactstrap';
 import FirebaseUIAuth from './FirebaseUIAuth';
 import firebase, { ui } from '../../firebase';
@@ -51,6 +52,9 @@ class Login extends Component<Props> {
   }
 }
 
-const mapStateToProps = ({ currentUser, authentication }) => ({ currentUser, authentication });
+const mapStateToProps: MapStateToProps<*, *, *> = ({ currentUser, authentication }) => ({
+  currentUser,
+  authentication
+});
 
 export default connect(mapStateToProps)(Login);

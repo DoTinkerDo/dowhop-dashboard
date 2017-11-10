@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import type { Match } from 'react-router-dom';
 import { connect } from 'react-redux';
+import type { MapStateToProps } from 'react-redux';
 import DoWhopButton from './DoWhopButton';
 
 const DoWhop = (props: { match: Match }) => {
@@ -20,6 +21,6 @@ const DoWhop = (props: { match: Match }) => {
   );
 };
 
-const mapStateToProps = ({ doWhopDescriptions }) => ({ doWhopDescriptions });
+const mapStateToProps: MapStateToProps<*, *, *> = ({ doWhopDescriptions }) => ({ doWhopDescriptions });
 
 export default connect(mapStateToProps)(DoWhop);
