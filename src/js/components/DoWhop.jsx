@@ -20,6 +20,8 @@ const DoWhop = (props: { match: Match, doWhopDescriptions: Object }) => {
         titleDescription={doWhopDescription && doWhopDescription.titleDescription}
         downloadURL={doWhopDescription && doWhopDescription.downloadURL}
         doWhopDescriptionKey={doWhopDescription && doWhopDescription.doWhopDescriptionKey}
+        creatorDescription={doWhopDescription && doWhopDescription.creatorDescription}
+        doerDescription={doWhopDescription && doWhopDescription.doerDescription}
       />
       <p>{key}</p>
       <Link to="/dashboard/">
