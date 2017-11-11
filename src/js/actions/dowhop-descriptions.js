@@ -71,7 +71,7 @@ export const submitDoWhopDescription = (doWhopDescription: Object) => {
 const startListeningForDoWhopDescriptions = () => (dispatch: Function) => {
   auth.onAuthStateChanged(user => {
     if (user) {
-      // cleanDowhopDescriptions();
+      cleanDowhopDescriptions();
       doWhopDescriptionsRef
         .orderByChild('createdAt')
         .limitToLast(25)
