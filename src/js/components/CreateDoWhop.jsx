@@ -1,10 +1,26 @@
 // @flow
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Moment from 'moment';
 import { Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import DoWhopButton from './DoWhopButton';
+import { setInputValue, submitDoWhopDescription } from '../actions/dowhop-descriptions';
 
-type Props = {};
+type Props = {
+  handleInputChange: Function,
+  handleInputSubmit: Function,
+  inputValues: Object,
+  currentUser: Object,
+  valueTitle: string,
+  valueWhy: string,
+  valueWho: string,
+  valueYou: string,
+  valueWhat: string,
+  valueWhen: string,
+  valueWhere: string,
+  valueCost: string
+};
 type State = {
   modal: boolean,
   valueTitleValid: boolean,
@@ -14,15 +30,7 @@ type State = {
   valueWhatValid: boolean,
   valueWhenValid: boolean,
   valueWhereValid: boolean,
-  valueCostValid: boolean,
-  valueTitle: string,
-  valueWhy: string,
-  valueWho: string,
-  valueYou: string,
-  valueWhat: string,
-  valueWhen: string,
-  valueWhere: string,
-  valueCost: string
+  valueCostValid: boolean
 };
 
 class CreateDoWhop extends Component<Props, State> {
@@ -35,46 +43,37 @@ class CreateDoWhop extends Component<Props, State> {
     valueWhatValid: true,
     valueWhenValid: true,
     valueWhereValid: true,
-    valueCostValid: true,
-    valueTitle: '',
-    valueWhy: '',
-    valueWho: '',
-    valueYou: '',
-    valueWhat: '',
-    valueWhen: '',
-    valueWhere: '',
-    valueCost: ''
+    valueCostValid: true
   };
 
   toggle = () => this.setState(prevState => ({ modal: !prevState.modal }));
 
   handleChange = (e: Object, input: string) => {
-    console.log(e.target.value, ' === ', input);
+    this.props.handleInputChange(e, input);
     // this.validateSocialUrl(e, site);
     // this.props.handleSocialUrlChange(e, site);
   };
 
   handleSubmit = () => {
-    // const socialUrls = {
-    //   facebookUrl: this.props.socialInputs.valueFB,
-    //   twitterUrl: this.props.socialInputs.valueTW,
-    //   instagramUrl: this.props.socialInputs.valueIG,
-    //   linkedInUrl: this.props.socialInputs.valueIN
-    // };
-    // this.props.handleSocialMediaUrlSubmit(socialUrls, this.props.uid);
-    // this.toggle();
+    const doWhopDescription = {
+      titleDescription: this.props.inputValues.valueTitle,
+      whyDescription: this.props.inputValues.valueWhy,
+      whoDescription: this.props.inputValues.valueWho,
+      whoAmIDescription: this.props.inputValues.valueYou,
+      whatDescription: this.props.inputValues.valueWhat,
+      whenDescription: this.props.inputValues.valueWhen,
+      whereDescription: this.props.inputValues.valueWhere,
+      howMuchDescription: this.props.inputValues.valueCost,
+      createdBy: this.props.currentUser.uid,
+      creatorDescription: this.props.currentUser.email.toLowerCase(),
+      createdAt: Moment().format('YYYY-MM-DD--HH:mm')
+    };
+    this.props.handleInputSubmit(doWhopDescription);
+    this.toggle();
   };
 
   render() {
     const {
-      valueTitle,
-      valueWhy,
-      valueWho,
-      valueYou,
-      valueWhat,
-      valueWhen,
-      valueWhere,
-      valueCost,
       valueTitleValid,
       valueWhyValid,
       valueWhoValid,
@@ -84,6 +83,7 @@ class CreateDoWhop extends Component<Props, State> {
       valueWhereValid,
       valueCostValid
     } = this.state;
+    const { valueTitle, valueWhy, valueWho, valueYou, valueWhat, valueWhen, valueWhere, valueCost } = this.props;
     return (
       <div>
         <DoWhopButton onClick={this.toggle}>Create a New DoWhop</DoWhopButton>
@@ -210,7 +210,7 @@ class CreateDoWhop extends Component<Props, State> {
             </Form>
           </ModalBody>
           <ModalFooter>
-            <DoWhopButton onClick={this.toggle}>Save</DoWhopButton>
+            <DoWhopButton onClick={this.handleSubmit}>Save</DoWhopButton>
             <DoWhopButton onClick={this.toggle}>Cancel</DoWhopButton>
           </ModalFooter>
         </Modal>
@@ -219,4 +219,18 @@ class CreateDoWhop extends Component<Props, State> {
   }
 }
 
-export default CreateDoWhop;
+const mapStateToProps = ({ inputValues, currentUser }) => ({
+  inputValues,
+  currentUser
+});
+
+const mapDispatchToProps = (dispatch: Function) => ({
+  handleInputChange(e, input) {
+    dispatch(setInputValue(e.target.value, input));
+  },
+  handleInputSubmit(doWhopDescription) {
+    submitDoWhopDescription(doWhopDescription);
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateDoWhop);

@@ -5,7 +5,8 @@ import {
   ADD_DOWHOP_DESCRIPTION,
   UPDATE_DOWHOP_DESCRIPTION,
   REMOVE_DOWHOP_DESCRIPTION,
-  REMOVE_DOWHOP_DESCRIPTIONS
+  REMOVE_DOWHOP_DESCRIPTIONS,
+  SET_INPUT_VALUE
 } from './actions';
 
 const doWhopDescriptionsRef = database.ref('DoWhopDescriptions');
@@ -55,10 +56,22 @@ const removeDowhopDescriptions = () => ({
   type: REMOVE_DOWHOP_DESCRIPTIONS
 });
 
+export const setInputValue = (value: string, input: string) => ({
+  type: SET_INPUT_VALUE,
+  input,
+  value
+});
+
+export const submitDoWhopDescription = (doWhopDescription: Object) => {
+  const pushKey = doWhopDescriptionsRef.push().key;
+  const doWhopDescriptionData = Object.assign({}, doWhopDescription, { doWhopDescriptionKey: pushKey });
+  doWhopDescriptionsRef.child(pushKey).update(doWhopDescriptionData);
+};
+
 const startListeningForDoWhopDescriptions = () => (dispatch: Function) => {
   auth.onAuthStateChanged(user => {
     if (user) {
-      cleanDowhopDescriptions();
+      // cleanDowhopDescriptions();
       doWhopDescriptionsRef
         .orderByChild('createdAt')
         .limitToLast(25)
