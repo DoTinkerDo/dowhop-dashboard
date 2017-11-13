@@ -9,6 +9,7 @@ import { filter } from 'lodash';
 import { Row } from 'reactstrap';
 import DoWhopButton from './DoWhopButton';
 import DoWhopDescriptionCard from './DoWhopDescriptionCard';
+import EditDoWhop from './EditDoWhop';
 
 const DoWhop = (props: { match: Match, doWhopDescriptions: Object }) => {
   const { match, doWhopDescriptions } = props;
@@ -24,6 +25,9 @@ const DoWhop = (props: { match: Match, doWhopDescriptions: Object }) => {
           creatorDescription={doWhopDescription && doWhopDescription.creatorDescription}
           doerDescription={doWhopDescription && doWhopDescription.doerDescription}
         />
+      </Row>
+      <Row className="">
+        <EditDoWhop />
       </Row>
       <Row className="float-right">
         <Link to="/dashboard/">
