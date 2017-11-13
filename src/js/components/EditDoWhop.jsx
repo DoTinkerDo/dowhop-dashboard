@@ -1,13 +1,13 @@
 // @flow 
 
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 // import Moment from 'moment';
-import { Form, FormGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Form, FormGroup, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
 
 // import { Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import DoWhopButton from './DoWhopButton';
-// import { setInputValue, submitDoWhopDescription } from '../actions/dowhop-descriptions';
+import { setInputValue } from '../actions/dowhop-descriptions'; // CHECK. 
 
 // Example:
 // import React, { Component } from 'react';
@@ -103,6 +103,18 @@ class EditDoWhop extends Component<Props, State> {
     };
 
     render() {
+
+    //             const {
+    //   valueTitleValid,
+    //         valueWhyValid,
+    //         valueWhoValid,
+    //         valueYouValid,
+    //         valueWhatValid,
+    //         valueWhenValid,
+    //         valueWhereValid,
+    //         valueCostValid
+    // } = this.state;
+        const { valueCreatorEmail } = this.props;
     //     const {
     // //   valueTitleValid,
     // //         valueWhyValid,
@@ -122,120 +134,20 @@ class EditDoWhop extends Component<Props, State> {
                         <ModalHeader toggle={this.toggle}>Edit your DoWhop</ModalHeader>
                         <Form>
                             <FormGroup>
-                                {/* <Label for="title">
-                                    DoWhop title
+                                <Label for="creator-email">
+                                    DoWhop Creator Email
                   <Input
                                         type="text"
                                         size="sm"
-                                        value={valueTitle}
-                                        name="dowhop-title"
-                                        id="title"
-                                        placeholder="Do this with me"
-                                        onChange={e => this.handleChange(e, 'valueTitle')}
-                                        valid={valueTitleValid}
+                                        value={valueCreatorEmail}
+                                        name="dowhop-creator-email"
+                                        id="dowhop-creator-email"
+                                        placeholder="Person's email who's hosting the DoWhop"
+                                        onChange={e => this.handleChange(e, 'valueCreatorEmail')}
+                                        // valid={valueCreatorEmailValid}
                                     />
                                 </Label>
                                 <br />
-                                <Label for="why">
-                                    Why do this DoWhop?
-                  <Input
-                                        type="textarea"
-                                        size="sm"
-                                        value={valueWhy}
-                                        name="dowhop-why"
-                                        id="why"
-                                        placeholder="Pitch this DoWhop. People who love doing this type of activity will think this part of the experience is awesome!"
-                                        onChange={e => this.handleChange(e, 'valueWhy')}
-                                        valid={valueWhyValid}
-                                        maxLength="500"
-                                        rows="6"
-                                    />
-                                </Label>
-                                <br />
-                                <Label for="who">
-                                    Who should join you?
-                  <Input
-                                        type="text"
-                                        size="sm"
-                                        value={valueWho}
-                                        name="dowhop-who"
-                                        id="who"
-                                        placeholder="This many people with this skill level can join"
-                                        onChange={e => this.handleChange(e, 'valueWho')}
-                                        valid={valueWhoValid}
-                                    />
-                                </Label>
-                                <br />
-                                <Label for="you">
-                                    Who are you?
-                  <Input
-                                        type="text"
-                                        size="sm"
-                                        value={valueYou}
-                                        name="dowhop-you"
-                                        id="you"
-                                        placeholder="I have this skill level and this background/experience"
-                                        onChange={e => this.handleChange(e, 'valueYou')}
-                                        valid={valueYouValid}
-                                    />
-                                </Label>
-                                <br />
-                                <Label for="what">
-                                    What will you provide?
-                  <Input
-                                        type="text"
-                                        size="sm"
-                                        value={valueWhat}
-                                        name="dowhop-what"
-                                        id="linkedin"
-                                        placeholder="I bring this, you bring that, we will make this"
-                                        onChange={e => this.handleChange(e, 'valueWhat')}
-                                        valid={valueWhatValid}
-                                    />
-                                </Label>
-                                <br />
-                                <Label for="when">
-                                    When will you do?
-                  <Input
-                                        type="text"
-                                        size="sm"
-                                        value={valueWhen}
-                                        name="social-linkedin"
-                                        id="when"
-                                        placeholder="It will take this many hours, on these days"
-                                        onChange={e => this.handleChange(e, 'valueWhen')}
-                                        valid={valueWhenValid}
-                                    />
-                                </Label>
-                                <br />
-                                <Label for="where">
-                                    Where will you meet?
-                  <Input
-                                        type="text"
-                                        size="sm"
-                                        value={valueWhere}
-                                        name="dowhop-where"
-                                        id="where"
-                                        placeholder="Meet at this location"
-                                        onChange={e => this.handleChange(e, 'valueWhere')}
-                                        valid={valueWhereValid}
-                                    />
-                                </Label>
-                                <br />
-                                <Label for="cost">
-                                    How much will it cost?
-                  <Input
-                                        type="text"
-                                        size="sm"
-                                        value={valueCost}
-                                        name="dowhop-cost"
-                                        id="cost"
-                                        placeholder="This much per person"
-                                        onChange={e => this.handleChange(e, 'valueCost')}
-                                        valid={valueCostValid}
-                                    />
-                                </Label>
-                                <br /> */}
                             </FormGroup>
                         </Form>
                     </ModalBody>
@@ -448,11 +360,19 @@ class EditDoWhop extends Component<Props, State> {
 //     }
 // }
 
-// const mapStateToProps = ({ inputValues, currentUser }) => ({
-//     inputValues,
-//     currentUser
-// });
+const mapStateToProps = ({ inputValues, currentUser }) => ({
+    inputValues,
+    currentUser
+});
 
+// CHECK:
+
+const mapDispatchToProps = (dispatch: Function) => ({
+    handleInputChange(e, input) {
+        dispatch(setInputValue(e.target.value, input));
+    }});
+
+// Example:
 // const mapDispatchToProps = (dispatch: Function) => ({
 //     handleInputChange(e, input) {
 //         dispatch(setInputValue(e.target.value, input));
@@ -462,6 +382,9 @@ class EditDoWhop extends Component<Props, State> {
 //     }
 // });
 
-export default EditDoWhop;
+// CHECK:
+// export default EditDoWhop;
+export default connect(mapStateToProps, mapDispatchToProps)(EditDoWhop);
+
 // Example: 
 // export default connect(mapStateToProps, mapDispatchToProps)(CreateDoWhop);
