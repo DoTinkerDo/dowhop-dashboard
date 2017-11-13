@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import Moment from 'moment';
+import { Form, FormGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
 // import { Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import DoWhopButton from './DoWhopButton';
 // import { setInputValue, submitDoWhopDescription } from '../actions/dowhop-descriptions';
@@ -63,7 +65,7 @@ import DoWhopButton from './DoWhopButton';
 // CHECK:
 class EditDoWhop extends Component<Props, State> {
     state = {
-        // modal: false,
+        modal: false,
         // valueTitleValid: true,
         // valueWhyValid: true,
         // valueWhoValid: true,
@@ -115,12 +117,12 @@ class EditDoWhop extends Component<Props, State> {
         return (
             <div>
                 <DoWhopButton onClick={this.toggle}>Edit DoWhop</DoWhopButton>
-                {/* <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                    <ModalBody className="create-dowhop-form">
-                        <ModalHeader toggle={this.toggle}>Create a new DoWhop</ModalHeader>
+                <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                    <ModalBody className="edit-dowhop-form">
+                        <ModalHeader toggle={this.toggle}>Edit your DoWhop</ModalHeader>
                         <Form>
                             <FormGroup>
-                                <Label for="title">
+                                {/* <Label for="title">
                                     DoWhop title
                   <Input
                                         type="text"
@@ -233,7 +235,7 @@ class EditDoWhop extends Component<Props, State> {
                                         valid={valueCostValid}
                                     />
                                 </Label>
-                                <br />
+                                <br /> */}
                             </FormGroup>
                         </Form>
                     </ModalBody>
@@ -241,7 +243,7 @@ class EditDoWhop extends Component<Props, State> {
                         <DoWhopButton onClick={this.handleSubmit}>Save</DoWhopButton>
                         <DoWhopButton onClick={this.toggle}>Cancel</DoWhopButton>
                     </ModalFooter>
-                </Modal> */}
+                </Modal>
             </div>
         );
     }
