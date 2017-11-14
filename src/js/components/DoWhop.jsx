@@ -27,7 +27,7 @@ const DoWhop = (props: { match: Match, doWhopDescriptions: Object }) => {
         />
       </Row>
       <Row className="">
-        <EditDoWhop />
+        <EditDoWhop doWhopDescriptionKey={doWhopDescription && doWhopDescription.doWhopDescriptionKey} />
       </Row>
       <Row className="float-right">
         <Link to="/dashboard/">
