@@ -7,7 +7,7 @@ import { Form, FormGroup, Modal, ModalHeader, ModalBody, ModalFooter, Label, Inp
 
 // import { Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import DoWhopButton from './DoWhopButton';
-import { setInputValue } from '../actions/dowhop-descriptions'; // CHECK. 
+import { setInputValue, updateDoWhopDescription } from '../actions/dowhop-descriptions'; // CHECK. 
 
 // Example:
 // import React, { Component } from 'react';
@@ -85,6 +85,12 @@ class EditDoWhop extends Component<Props, State> {
     };
 
     handleSubmit = () => {
+
+        const changeDoWhopDescription = {
+            doerDescription: this.props.inputValues.valueDoerEmail
+        };
+
+        // Example:
         // const doWhopDescription = {
         //     titleDescription: this.props.inputValues.valueTitle,
         //     whyDescription: this.props.inputValues.valueWhy,
@@ -98,7 +104,13 @@ class EditDoWhop extends Component<Props, State> {
         //     creatorDescription: this.props.currentUser.email.toLowerCase(),
         //     createdAt: Moment().format('YYYY-MM-DD--HH:mm')
         // };
+
+        this.props.handleInputSubmit(changeDoWhopDescription);
+
+        // Example:
         // this.props.handleInputSubmit(doWhopDescription);
+
+        // Check:
         this.toggle();
     };
 
@@ -114,7 +126,7 @@ class EditDoWhop extends Component<Props, State> {
     //         valueWhereValid,
     //         valueCostValid
     // } = this.state;
-        const { valueCreatorEmail } = this.props;
+        const { valueDoerEmail } = this.props;
     //     const {
     // //   valueTitleValid,
     // //         valueWhyValid,
@@ -134,17 +146,17 @@ class EditDoWhop extends Component<Props, State> {
                         <ModalHeader toggle={this.toggle}>Edit your DoWhop</ModalHeader>
                         <Form>
                             <FormGroup>
-                                <Label for="creator-email">
-                                    DoWhop Creator Email
+                                <Label for="doer-email">
+                                    DoWhop Doer Email
                   <Input
                                         type="text"
                                         size="sm"
-                                        value={valueCreatorEmail}
-                                        name="dowhop-creator-email"
-                                        id="dowhop-creator-email"
-                                        placeholder="Person's email who's hosting the DoWhop"
-                                        onChange={e => this.handleChange(e, 'valueCreatorEmail')}
-                                        // valid={valueCreatorEmailValid}
+                                        value={valueDoerEmail}
+                                        name="dowhop-doer-email"
+                                        id="dowhop-doer-email"
+                                        placeholder="Email for who's doing the DoWhop"
+                                        onChange={e => this.handleChange(e, 'valueDoerEmail')}
+                                        // valid={valueDoerEmailValid}
                                     />
                                 </Label>
                                 <br />
@@ -370,7 +382,13 @@ const mapStateToProps = ({ inputValues, currentUser }) => ({
 const mapDispatchToProps = (dispatch: Function) => ({
     handleInputChange(e, input) {
         dispatch(setInputValue(e.target.value, input));
-    }});
+    },
+    handleInputSubmit(changeDoWhopDescription) {
+        console.log(changeDoWhopDescription); // DEV TO-DO: Link submission to data update. 
+        // updateDoWhopDescription(changeDoWhopDescription);
+    }
+});
+
 
 // Example:
 // const mapDispatchToProps = (dispatch: Function) => ({
