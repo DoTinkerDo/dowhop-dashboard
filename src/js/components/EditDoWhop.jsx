@@ -29,28 +29,9 @@ class EditDoWhop extends Component<Props, State> {
   };
 
   render() {
-    //             const {
-    //   valueTitleValid,
-    //         valueWhyValid,
-    //         valueWhoValid,
-    //         valueYouValid,
-    //         valueWhatValid,
-    //         valueWhenValid,
-    //         valueWhereValid,
-    //         valueCostValid
-    // } = this.state;
+
     const { valueDoerEmail, doWhopDescriptionKey } = this.props;
-    //     const {
-    // //   valueTitleValid,
-    // //         valueWhyValid,
-    // //         valueWhoValid,
-    // //         valueYouValid,
-    // //         valueWhatValid,
-    // //         valueWhenValid,
-    // //         valueWhereValid,
-    // //         valueCostValid
-    // } = this.state;
-    // const { valueTitle, valueWhy, valueWho, valueYou, valueWhat, valueWhen, valueWhere, valueCost } = this.props;
+
     return <div>
         <DoWhopButton onClick={this.toggle}>Edit DoWhop</DoWhopButton>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
@@ -103,7 +84,4 @@ const mapDispatchToProps = (dispatch: Function) => ({
 //         submitDoWhopDescription(doWhopDescription);
 //     }
 // });
-
-// CHECK:
-// export default EditDoWhop;
 export default connect(mapStateToProps, mapDispatchToProps)(EditDoWhop);
