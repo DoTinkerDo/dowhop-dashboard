@@ -24,9 +24,16 @@
         "start:prod": "webpack && node server.js"
     },
     "jest": {
-        "snapshotSerializers": ["jest-serializer-enzyme"]
+        "snapshotSerializers": [
+            "jest-serializer-enzyme"
+        ]
     },
-    "keywords": ["reactJS", "boilerplate", "javascript", "firebase"],
+    "keywords": [
+        "reactJS",
+        "boilerplate",
+        "javascript",
+        "firebase"
+    ],
     "dependencies": {
         "axios": "^0.16.2",
         "babel-plugin-dynamic-import-webpack": "^1.0.1",
@@ -48,6 +55,7 @@
         "react-addons-css-transition-group": "^15.4.1",
         "react-addons-perf": "^15.4.2",
         "react-addons-transition-group": "^15.4.1",
+        "react-copy-to-clipboard": "^5.0.1",
         "react-dom": "^16.0.0",
         "react-jss": "^7.0.2",
         "react-redux": "^5.0.6",

@@ -10,6 +10,7 @@ import { Row } from 'reactstrap';
 import DoWhopButton from './DoWhopButton';
 import DoWhopDescriptionCard from './DoWhopDescriptionCard';
 import EditDoWhop from './EditDoWhop';
+import ImageUrls from './ImageUrls';
 
 const DoWhop = (props: { match: Match, doWhopDescriptions: Object }) => {
   const { match, doWhopDescriptions } = props;
@@ -29,6 +30,7 @@ const DoWhop = (props: { match: Match, doWhopDescriptions: Object }) => {
       <Row className="">
         <EditDoWhop doWhopDescriptionKey={doWhopDescription && doWhopDescription.doWhopDescriptionKey} />
       </Row>
+      <ImageUrls downloadURL={doWhopDescription && doWhopDescription.downloadURL} />
       <Row className="float-right">
         <Link to="/dashboard/">
           <DoWhopButton>Back</DoWhopButton>
