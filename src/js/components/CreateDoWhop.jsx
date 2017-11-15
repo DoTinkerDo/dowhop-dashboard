@@ -19,7 +19,8 @@ type Props = {
   valueWhat: string,
   valueWhen: string,
   valueWhere: string,
-  valueCost: string
+  valueCost: string,
+  valueDoers: string
 };
 type State = {
   modal: boolean,
@@ -30,7 +31,8 @@ type State = {
   valueWhatValid: boolean,
   valueWhenValid: boolean,
   valueWhereValid: boolean,
-  valueCostValid: boolean
+  valueCostValid: boolean,
+  valueDoersValid: boolean
 };
 
 class CreateDoWhop extends Component<Props, State> {
@@ -43,15 +45,15 @@ class CreateDoWhop extends Component<Props, State> {
     valueWhatValid: true,
     valueWhenValid: true,
     valueWhereValid: true,
-    valueCostValid: true
+    valueCostValid: true,
+    valueDoersValid: true
   };
 
   toggle = () => this.setState(prevState => ({ modal: !prevState.modal }));
 
   handleChange = (e: Object, input: string) => {
     this.props.handleInputChange(e, input);
-    // this.validateSocialUrl(e, site);
-    // this.props.handleSocialUrlChange(e, site);
+    // this.validateCreateDoWhopDescription(e, site);
   };
 
   handleSubmit = () => {
@@ -66,6 +68,7 @@ class CreateDoWhop extends Component<Props, State> {
       howMuchDescription: this.props.inputValues.valueCost,
       createdBy: this.props.currentUser.uid,
       creatorDescription: this.props.currentUser.email.toLowerCase(),
+      doerDescription: this.props.inputValues.valueDoers.toLowerCase(),
       createdAt: Moment().format('YYYY-MM-DD--HH:mm')
     };
     this.props.handleInputSubmit(doWhopDescription);
@@ -81,9 +84,20 @@ class CreateDoWhop extends Component<Props, State> {
       valueWhatValid,
       valueWhenValid,
       valueWhereValid,
-      valueCostValid
+      valueCostValid,
+      valueDoersValid
     } = this.state;
-    const { valueTitle, valueWhy, valueWho, valueYou, valueWhat, valueWhen, valueWhere, valueCost } = this.props;
+    const {
+      valueTitle,
+      valueWhy,
+      valueWho,
+      valueYou,
+      valueWhat,
+      valueWhen,
+      valueWhere,
+      valueCost,
+      valueDoers
+    } = this.props;
     return (
       <div>
         <DoWhopButton onClick={this.toggle}>Create a New DoWhop</DoWhopButton>
@@ -157,7 +171,7 @@ class CreateDoWhop extends Component<Props, State> {
                     size="sm"
                     value={valueWhat}
                     name="dowhop-what"
-                    id="linkedin"
+                    id="what"
                     placeholder="I bring this, you bring that, we will make this"
                     onChange={e => this.handleChange(e, 'valueWhat')}
                     valid={valueWhatValid}
@@ -170,7 +184,7 @@ class CreateDoWhop extends Component<Props, State> {
                     type="text"
                     size="sm"
                     value={valueWhen}
-                    name="social-linkedin"
+                    name="dowhop-when"
                     id="when"
                     placeholder="It will take this many hours, on these days"
                     onChange={e => this.handleChange(e, 'valueWhen')}
@@ -203,6 +217,23 @@ class CreateDoWhop extends Component<Props, State> {
                     placeholder="This much per person"
                     onChange={e => this.handleChange(e, 'valueCost')}
                     valid={valueCostValid}
+                  />
+                </Label>
+                <br />
+              </FormGroup>
+              <FormGroup>IMAGE UPLOAD PLACEHOLDER</FormGroup>
+              <FormGroup>
+                <Label for="doers">
+                  Doer email addresses
+                  <Input
+                    type="text"
+                    size="sm"
+                    value={valueDoers}
+                    name="dowhop-doers"
+                    id="doers"
+                    placeholder="Enter emails separated by comma ','"
+                    onChange={e => this.handleChange(e, 'valueDoers')}
+                    valid={valueDoersValid}
                   />
                 </Label>
                 <br />
