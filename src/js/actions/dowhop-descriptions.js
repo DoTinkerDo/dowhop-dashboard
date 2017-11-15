@@ -73,8 +73,10 @@ const startListeningForDoWhopDescriptions = () => (dispatch: Function) => {
     if (user) {
       cleanDowhopDescriptions();
       doWhopDescriptionsRef
+        // either one works. child or key
+        // .orderByKey()
         .orderByChild('createdAt')
-        .limitToLast(25)
+        .limitToLast(27)
         .on('child_added', snapshot => dispatch(addDoWhopDescription(snapshot.val())));
       doWhopDescriptionsRef.on('child_changed', snapshot => dispatch(updateDoWhopDescription(snapshot.val())));
       doWhopDescriptionsRef.on('child_removed', snapshot => dispatch(removeDoWhopDescription(snapshot.val())));
